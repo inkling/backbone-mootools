@@ -1,6 +1,6 @@
 Backbone MooTools is an adapter for using Backbone with the MooTools framework. The basic
 idea behind it is to use the jQuery API as a wrapper to MooTools calls to allow us to
-seamlessly use Backbone.js without changing it's internals.
+seamlessly use Backbone.js without changing its internals.
 
 ## Usage
 

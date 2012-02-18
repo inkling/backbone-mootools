@@ -38,7 +38,7 @@ doesn't support event namespacing we can't do this currently. We currently strip
 from events when we bind them.
 
 Because of these limitations the following Backbone unit tests are expected to fail on
-Backbone 0.5.3:
+Backbone 0.9.1:
 
  * Backbone.View: View: delegateEvents
  * Backbone.View: View: undelegateEvents

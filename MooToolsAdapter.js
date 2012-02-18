@@ -230,6 +230,24 @@
                 this[i].fireEvent(eventName);
             }
             return this;
+        },
+
+        /**
+         * Find all elements that match a given selector which are descendants of the
+         * elements selected the MooToolsAdapter.
+         *
+         * @param selector:String - A css3 selector;
+         *
+         * @return MooToolsAdapter A MooToolsAdapter containing the selected
+         *     elements.
+         */
+        find: function(selector){
+            var elements = new Elements();
+            for (var i = 0; i < this.length; i++){
+                var result = this[i].getElements(selector);
+                elements = elements.concat(result);
+            }
+            return new MooToolsAdapter(elements);
         }
     });
 

@@ -254,20 +254,20 @@
     /**
      * JQuery Selector Methods
      *
-     * $(html) - Returns an HTML element wrapped in a MooToolsAdapter.
-     * $(expression) - Returns a MooToolsAdapter containing an element set corresponding the
+     * jQuery(html) - Returns an HTML element wrapped in a MooToolsAdapter.
+     * jQuery(expression) - Returns a MooToolsAdapter containing an element set corresponding the
      *     elements selected by the expression.
-     * $(expression, context) - Returns a MooToolsAdapter containing an element set corresponding
+     * jQuery(expression, context) - Returns a MooToolsAdapter containing an element set corresponding
      *     to applying the expression in the specified context.
-     * $(element) - Wraps the provided element in a MooToolsAdapter and returns it.
+     * jQuery(element) - Wraps the provided element in a MooToolsAdapter and returns it.
      *
      * @return MooToolsAdapter an adapter element containing the selected/constructed
      *     elements.
      */
-    window.$ = function(expression, context){
+    window.jQuery = function(expression, context){
         var elements;
 
-        // Handle $(html).
+        // Handle jQuery(html).
         if (typeof expression === 'string' && !context){
             if (expression.charAt(0) === '<' && expression.chartAt(expression.length - 1) === '>'){
                 elements = [new Element('div', {
@@ -277,26 +277,26 @@
             }
         } else if (typeof expression == 'object'){
             if (instanceOf(expression, MooToolsAdapter)){
-                // Handle $(MooToolsAdapter)
+                // Handle jQuery(MooToolsAdapter)
                 return expression;
             } else {
-                // Handle $(element).
+                // Handle jQuery(element).
                 return new MooToolsAdapter([expression]);
             }
         }
 
-        // Handle $(expression) and $(expression, context).
+        // Handle jQuery(expression) and jQuery(expression, context).
         context = context || document;
         elements = context.getElements(expression);
         return new MooToolsAdapter(elements);
     };
 
     /*
-     * $.ajax
+     * jQuery.ajax
      *
      * Maps a jQuery ajax request to a MooTools Request and sends it.
      */
-    window.$.ajax = function(params){
+    window.jQuery.ajax = function(params){
         var emulation = false;
         var data = params.data;
         if (Backbone.emulateJSON){
@@ -319,7 +319,4 @@
         new Request(parameters).send();
     };
 
-    // Hijack the jQuery variable to patch into Backbone if a jQuery object doesn't
-    // exist.
-    if (!window.jQuery) jQuery = window.$;
 })(window);

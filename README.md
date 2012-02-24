@@ -15,6 +15,8 @@ For example:
     <script src="http://www.yourwebsite.com/MooToolsAdapter.js"></script>
     <script src="http://www.yourwebsite.com/backbone.js"></script>
 
+Note: backbone-mootools does not remap the $ object. It only remaps the jQuery object.
+
 ## Dependencies
 
 Backbone MooTools depends on the following MooTools modules:
@@ -47,6 +49,7 @@ Backbone 0.9.1:
 ## Contributors
 
  * Avi Itskovich ([@aitskovi](http://www.twitter.com/aitskovi))
+ * Dimitar Christoff ([@D_mitar](http://www.twitter.com/D_mitar))
 
 ## Supported Libraries
 

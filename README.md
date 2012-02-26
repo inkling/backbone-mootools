@@ -15,6 +15,8 @@ For example:
     <script src="http://www.yourwebsite.com/MooToolsAdapter.js"></script>
     <script src="http://www.yourwebsite.com/backbone.js"></script>
 
+Note: backbone-mootools does not remap the $ object. It only remaps the jQuery object.
+
 ## Dependencies
 
 Backbone MooTools depends on the following MooTools modules:
@@ -38,7 +40,7 @@ doesn't support event namespacing we can't do this currently. We currently strip
 from events when we bind them.
 
 Because of these limitations the following Backbone unit tests are expected to fail on
-Backbone 0.5.3:
+Backbone 0.9.1:
 
  * Backbone.View: View: delegateEvents
  * Backbone.View: View: undelegateEvents
@@ -47,6 +49,7 @@ Backbone 0.5.3:
 ## Contributors
 
  * Avi Itskovich ([@aitskovi](http://www.twitter.com/aitskovi))
+ * Dimitar Christoff ([@D_mitar](http://www.twitter.com/D_mitar))
 
 ## Supported Libraries
 

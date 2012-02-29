@@ -7,9 +7,17 @@
   <script type="text/javascript" src="../MooToolsAdapter.js"></script>
   <script type="text/javascript" src="../backbone/test/vendor/qunit.js"></script>
   <script type="text/javascript" src="../backbone/test/vendor/jslitmus.js"></script>
-  <script type="text/javascript" src="../backbone/test/vendor/underscore-1.1.6.js"></script>
+  <script type="text/javascript" src="../backbone/test/vendor/underscore-1.3.1.js"></script>
   <script type="text/javascript" src="../backbone/backbone.js"></script>
 
+  <!--
+       Remap $ to jQuery for the tests only. This is necessary, so we don't have
+       to have this mapping inside the adapter. Although the tests use $ as jQuery,
+       Backbone simply uses the jQuery variable.
+  -->
+  <script>
+      window.$ = jQuery;
+  </script>
   <script type="text/javascript" src="../backbone/test/events.js"></script>
   <script type="text/javascript" src="../backbone/test/model.js"></script>
   <script type="text/javascript" src="../backbone/test/collection.js"></script>

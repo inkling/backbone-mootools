@@ -86,14 +86,13 @@
          * @return MooToolsAdapter The object the method was called on.
          */
         html: function(htmlString){
-        	if (typeof htmlString === 'undefined') {
-	             return this[0].get('html');
-	        }        		
-        	else {
-	            for (var i = 0; i < this.length; i++){
-	                this[i].set('html', htmlString);
-	            }
-        	}
+            if (typeof htmlString === 'undefined') {
+                return this[0].get('html');
+            } else {
+                for (var i = 0; i < this.length; i++){
+                    this[i].set('html', htmlString);
+                }
+            }
             return this;
         },
 

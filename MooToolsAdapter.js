@@ -36,7 +36,7 @@
          */
         hide: function(){
             for (var i = 0; i < this.length; i++){
-                this[i].setStyle({display: 'none'});
+                this[i].setStyle('display', 'none');
             }
             return this;
         },
@@ -86,9 +86,14 @@
          * @return MooToolsAdapter The object the method was called on.
          */
         html: function(htmlString){
-            for (var i = 0; i < this.length; i++){
-                this[i].set('html', htmlString);
-            }
+        	if (typeof htmlString === 'undefined') {
+	             return this[0].get('html');
+	        }        		
+        	else {
+	            for (var i = 0; i < this.length; i++){
+	                this[i].set('html', htmlString);
+	            }
+        	}
             return this;
         },
 

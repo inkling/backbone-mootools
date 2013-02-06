@@ -179,6 +179,21 @@
         },
 
         /**
+         * Support the "on" alias for binding events.
+         */
+        on: function(eventName, method){
+            return this.bind(eventName, method);
+        },
+
+        /**
+         * Support the "off" alias for binding events.
+         */
+        off: function(eventName){
+            return this.unbind(eventName);
+        },
+
+
+        /**
          * Return the element at the specified index on the MooToolsAdapter.
          * Equivalent to MooToolsAdapter[index].
          *

@@ -138,6 +138,43 @@
         },
 
         /**
+         * Undelegate the delegated events for the specified element selector.
+         */
+        undelegate: function(){
+            if (arguments.length > 0) {
+                var selector = arguments[0];
+            	var eventName = arguments[1];
+
+            	// Remove namespacing because it's not supported in MooTools.
+            	eventName = this.removeNamespace_(eventName);
+
+            	//Check if method is defined
+            	if (typeof arguments[2] !== "undefined" && arguments[2] !== null) {
+            		var method = arguments[2];
+
+		            // Note: MooTools Delegation does not support delegating on blur and focus yet.
+		            for (var i = 0; i < this.length; i++){
+		                this[i].removeEvent(eventName + ':relay(' + selector + ')', method);
+		            }
+
+		        //If no method is defined, just remove events.
+            	} else {
+		            // Note: MooTools Delegation does not support delegating on blur and focus yet.
+		            for (var i = 0; i < this.length; i++){
+		                this[i].removeEvents(eventName + ':relay(' + selector + ')');
+		            }
+            	}
+
+            } else {
+	            for (var i = 0; i < this.length; i++){
+	                this[i].removeEvents();
+	            }
+            }
+
+            return this;
+        },
+
+        /**
          * Bind the elements on the MooToolsAdapter to call the specific method for the specific
          * event.
          *
@@ -179,19 +216,48 @@
         },
 
         /**
-         * Support the "on" alias for binding events.
+         * Support the "on" alias for binding or delegating
+         * events depending on the number of given parameters.
          */
-        on: function(eventName, method){
-            return this.bind(eventName, method);
+        on: function(){
+        	//If 3 arguments are specified (where first agument being a selector), use delegation.
+        	if (arguments.length === 3) {
+				var selector  = arguments[0];
+				var eventName = arguments[1];
+				var method    = arguments[2];
+
+        		return this.delegate(selector, eventName, method)
+
+        	//... if not, use binding.
+        	} else {
+				var eventName = arguments[0];
+				var method    = arguments[1];
+
+        		return this.bind(eventName, method);
+        	}
         },
 
         /**
-         * Support the "off" alias for binding events.
+         * Support the "off" alias for binding events
+         * or undelegation depending on the given parameters.
          */
-        off: function(eventName){
-            return this.unbind(eventName);
-        },
+        off: function(){
+        	//If 3 arguments are specified (where first agument being a selector), use undelegation.
+        	if (arguments.length === 3) {
+				var selector  = arguments[0];
+				var eventName = arguments[1];
+				var method    = arguments[2];
 
+        		return this.undelegate(selector, eventName)
+
+        	//... if not, use unbinding.
+        	} else {
+				var eventName = arguments[0];
+				var method    = arguments[1];
+
+        		return this.unbind(eventName, method);
+        	}
+        },
 
         /**
          * Return the element at the specified index on the MooToolsAdapter.

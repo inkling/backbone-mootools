@@ -184,13 +184,12 @@
 		 * @return MooToolsAdapter The object the method was called on.
 		 */
 		bind: function(eventName, method){
-			// Remove namespacing because it's not supported in MooTool s.
+			// Remove namespacing because it's not supported in MooTools.
 			eventName = this.removeNamespace_(eventName);
 
 			// Bind the events.
 			for (var i = 0; i < this.length; i++){
 				if (eventName == 'popstate' || eventName == 'hashchange'){
-					alert("hello");
 					if (this[i].addEventListener) {
 						this[i].addEventListener(eventName, method);
 					} else {

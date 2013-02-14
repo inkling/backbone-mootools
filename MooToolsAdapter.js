@@ -273,7 +273,7 @@
 
         // Handle jQuery(html).
         if (typeof expression === 'string' && !context){
-            if (expression.charAt(0) === '<' && expression.chartAt(expression.length - 1) === '>'){
+            if (expression.charAt(0) === '<' && expression.charAt(expression.length - 1) === '>'){
                 elements = [new Element('div', {
                     html: expression
                 }).getFirst()];
